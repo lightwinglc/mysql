@@ -301,7 +301,7 @@ func (mc *mysqlConn) auth(authData []byte, plugin string) ([]byte, error) {
 		// http://dev.mysql.com/doc/refman/5.7/en/pam-authentication-plugin.html
 		return append([]byte(mc.cfg.Passwd), 0), nil
 
-	case "mysql_native_password":
+	case "mysql_native_password", "aidb_native_password":
 		if !mc.cfg.AllowNativePasswords {
 			return nil, ErrNativePassword
 		}
